@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6368DA01167F21E32DC24FAC /* Pods_OKTMDb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE2685F4030CE902DA5720E4 /* Pods_OKTMDb.framework */; };
 		95034811285DDE9900EB572E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95034810285DDE9900EB572E /* AppDelegate.swift */; };
 		95034813285DDE9900EB572E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95034812285DDE9900EB572E /* SceneDelegate.swift */; };
 		95034818285DDE9900EB572E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95034816285DDE9900EB572E /* Main.storyboard */; };
@@ -26,6 +27,9 @@
 		9503481E285DDE9900EB572E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		957D79F3285E075300DF8047 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		957D79F5285E075D00DF8047 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EAC5426C075271B3E7DA09F9 /* Pods-OKTMDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.release.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.release.xcconfig"; sourceTree = "<group>"; };
+		EE2685F4030CE902DA5720E4 /* Pods_OKTMDb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKTMDb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB7D5A3F393A7A3E1BBD616B /* Pods-OKTMDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.debug.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6368DA01167F21E32DC24FAC /* Pods_OKTMDb.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7BB82FE021CD707DB6AC69F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FB7D5A3F393A7A3E1BBD616B /* Pods-OKTMDb.debug.xcconfig */,
+				EAC5426C075271B3E7DA09F9 /* Pods-OKTMDb.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		918D0490009A2B847DCB9308 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE2685F4030CE902DA5720E4 /* Pods_OKTMDb.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		95034804285DDE9900EB572E = {
 			isa = PBXGroup;
 			children = (
 				9503480F285DDE9900EB572E /* OKTMDb */,
 				9503480E285DDE9900EB572E /* Products */,
+				7BB82FE021CD707DB6AC69F0 /* Pods */,
+				918D0490009A2B847DCB9308 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,9 +198,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95034821285DDE9900EB572E /* Build configuration list for PBXNativeTarget "OKTMDb" */;
 			buildPhases = (
+				9A9ECF549261818970AFAB07 /* [CP] Check Pods Manifest.lock */,
 				95034809285DDE9900EB572E /* Sources */,
 				9503480A285DDE9900EB572E /* Frameworks */,
 				9503480B285DDE9900EB572E /* Resources */,
+				10EB91C5E21D52EBBB664837 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -231,6 +258,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		10EB91C5E21D52EBBB664837 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OKTMDb/Pods-OKTMDb-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OKTMDb/Pods-OKTMDb-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OKTMDb/Pods-OKTMDb-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A9ECF549261818970AFAB07 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OKTMDb-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		95034809285DDE9900EB572E /* Sources */ = {
@@ -382,6 +451,7 @@
 		};
 		95034822285DDE9900EB572E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB7D5A3F393A7A3E1BBD616B /* Pods-OKTMDb.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -410,6 +480,7 @@
 		};
 		95034823285DDE9900EB572E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAC5426C075271B3E7DA09F9 /* Pods-OKTMDb.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
