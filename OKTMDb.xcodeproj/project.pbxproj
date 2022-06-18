@@ -15,6 +15,10 @@
 		9503481D285DDE9900EB572E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9503481B285DDE9900EB572E /* LaunchScreen.storyboard */; };
 		957D79F4285E075300DF8047 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D79F3285E075300DF8047 /* MainViewController.swift */; };
 		957D79F6285E075D00DF8047 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D79F5285E075D00DF8047 /* DetailViewController.swift */; };
+		957D79FA285E0A4400DF8047 /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D79F9285E0A4400DF8047 /* RequestError.swift */; };
+		957D79FC285E0FA700DF8047 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D79FB285E0FA700DF8047 /* APIClient.swift */; };
+		957D79FE285E108000DF8047 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D79FD285E108000DF8047 /* APIRouter.swift */; };
+		957D7A00285E16C800DF8047 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D79FF285E16C800DF8047 /* Properties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		9503481E285DDE9900EB572E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		957D79F3285E075300DF8047 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		957D79F5285E075D00DF8047 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		957D79F9285E0A4400DF8047 /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		957D79FB285E0FA700DF8047 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		957D79FD285E108000DF8047 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		957D79FF285E16C800DF8047 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		EAC5426C075271B3E7DA09F9 /* Pods-OKTMDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.release.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.release.xcconfig"; sourceTree = "<group>"; };
 		EE2685F4030CE902DA5720E4 /* Pods_OKTMDb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKTMDb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7D5A3F393A7A3E1BBD616B /* Pods-OKTMDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.debug.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.debug.xcconfig"; sourceTree = "<group>"; };
@@ -50,7 +58,6 @@
 				FB7D5A3F393A7A3E1BBD616B /* Pods-OKTMDb.debug.xcconfig */,
 				EAC5426C075271B3E7DA09F9 /* Pods-OKTMDb.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -141,6 +148,9 @@
 		957D79EE285E06D100DF8047 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				957D79FD285E108000DF8047 /* APIRouter.swift */,
+				957D79FB285E0FA700DF8047 /* APIClient.swift */,
+				957D79F9285E0A4400DF8047 /* RequestError.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -149,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				957D79F8285E07E100DF8047 /* Extensions */,
+				957D79FF285E16C800DF8047 /* Properties.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -306,10 +317,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957D7A00285E16C800DF8047 /* Properties.swift in Sources */,
+				957D79FE285E108000DF8047 /* APIRouter.swift in Sources */,
 				957D79F4285E075300DF8047 /* MainViewController.swift in Sources */,
+				957D79FA285E0A4400DF8047 /* RequestError.swift in Sources */,
 				95034811285DDE9900EB572E /* AppDelegate.swift in Sources */,
 				95034813285DDE9900EB572E /* SceneDelegate.swift in Sources */,
 				957D79F6285E075D00DF8047 /* DetailViewController.swift in Sources */,
+				957D79FC285E0FA700DF8047 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
