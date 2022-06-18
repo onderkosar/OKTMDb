@@ -8,6 +8,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var nowPlayingCollectionView: UICollectionView!
     @IBOutlet weak var upcomingTableView: UITableView!
     
@@ -21,6 +22,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        configureScrollView()
         configureCollectionView()
         configureTableView()
         configureActivityIndicators()
@@ -34,6 +36,26 @@ class MainViewController: UIViewController {
         viewModel.fetchUpcomingList()
     }
     
+    private func configureScrollView() {
+        scrollView.delegate = self
+        scrollView.bounces = false
+    }
+    
+    private func configureCollectionView() {
+        nowPlayingCollectionView.register(UINib(nibName: StoryboardIDs.nowPlayingListCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: StoryboardIDs.nowPlayingListCollectionViewCell)
+        nowPlayingCollectionView.delegate = self
+        nowPlayingCollectionView.dataSource = self
+    }
+    
+    private func configureTableView() {
+        upcomingTableView.delegate = self
+        upcomingTableView.dataSource = self
+        upcomingTableView.register(UINib(nibName: StoryboardIDs.upcomingListTableViewCell, bundle: nil), forCellReuseIdentifier: StoryboardIDs.upcomingListTableViewCell)
+        upcomingTableView.separatorStyle = .none
+        upcomingTableView.isScrollEnabled = false
+        upcomingTableView.bounces = true
+    }
+    
     private func configureActivityIndicators() {
         nowPlayingIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nowPlayingIndicator)
@@ -43,18 +65,6 @@ class MainViewController: UIViewController {
         view.addSubview(upcomingIndicator)
         upcomingIndicator.centerXAnchor.constraint(equalTo: upcomingTableView.centerXAnchor).isActive = true
         upcomingIndicator.centerYAnchor.constraint(equalTo: upcomingTableView.topAnchor, constant: 200.0).isActive = true
-    }
-    
-    private func configureCollectionView() {
-        nowPlayingCollectionView.register(UINib(nibName: StoryboardIDs.nowPlayingListCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: StoryboardIDs.nowPlayingListCollectionViewCell)
-        nowPlayingCollectionView.delegate = self
-        nowPlayingCollectionView.dataSource = self
-    }
-    private func configureTableView() {
-        upcomingTableView.delegate = self
-        upcomingTableView.dataSource = self
-        upcomingTableView.register(UINib(nibName: StoryboardIDs.upcomingListTableViewCell, bundle: nil), forCellReuseIdentifier: StoryboardIDs.upcomingListTableViewCell)
-        upcomingTableView.separatorStyle = .none
     }
 }
 
@@ -93,6 +103,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView == self.scrollView {
+            upcomingTableView.isScrollEnabled = (self.scrollView.contentOffset.y >= nowPlayingCollectionView.bounds.height)
+        } else if scrollView == upcomingTableView {
+            upcomingTableView.isScrollEnabled = (upcomingTableView.contentOffset.y > 0)
+        }
     }
 }
 
