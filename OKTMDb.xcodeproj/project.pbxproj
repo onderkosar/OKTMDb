@@ -22,6 +22,13 @@
 		957D7A02285E290F00DF8047 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A01285E290F00DF8047 /* MainViewModel.swift */; };
 		957D7A04285E293600DF8047 /* MainContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A03285E293600DF8047 /* MainContracts.swift */; };
 		957D7A0A285E510000DF8047 /* MovieListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A09285E510000DF8047 /* MovieListModel.swift */; };
+		957D7A0F285E748800DF8047 /* NowPlayingListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A0D285E748800DF8047 /* NowPlayingListCollectionViewCell.swift */; };
+		957D7A10285E748800DF8047 /* NowPlayingListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957D7A0E285E748800DF8047 /* NowPlayingListCollectionViewCell.xib */; };
+		957D7A12285E776100DF8047 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A11285E776100DF8047 /* UIImageView+Ext.swift */; };
+		957D7A15285E88A000DF8047 /* UpcomingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A13285E88A000DF8047 /* UpcomingListTableViewCell.swift */; };
+		957D7A16285E88A000DF8047 /* UpcomingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957D7A14285E88A000DF8047 /* UpcomingListTableViewCell.xib */; };
+		957D7A18285E8D6E00DF8047 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A17285E8D6E00DF8047 /* String+Ext.swift */; };
+		957D7A1A285E8D8900DF8047 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A19285E8D8900DF8047 /* Date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +48,13 @@
 		957D7A01285E290F00DF8047 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		957D7A03285E293600DF8047 /* MainContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContracts.swift; sourceTree = "<group>"; };
 		957D7A09285E510000DF8047 /* MovieListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListModel.swift; sourceTree = "<group>"; };
+		957D7A0D285E748800DF8047 /* NowPlayingListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingListCollectionViewCell.swift; sourceTree = "<group>"; };
+		957D7A0E285E748800DF8047 /* NowPlayingListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingListCollectionViewCell.xib; sourceTree = "<group>"; };
+		957D7A11285E776100DF8047 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
+		957D7A13285E88A000DF8047 /* UpcomingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpcomingListTableViewCell.swift; sourceTree = "<group>"; };
+		957D7A14285E88A000DF8047 /* UpcomingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingListTableViewCell.xib; sourceTree = "<group>"; };
+		957D7A17285E8D6E00DF8047 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		957D7A19285E8D8900DF8047 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		EAC5426C075271B3E7DA09F9 /* Pods-OKTMDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.release.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.release.xcconfig"; sourceTree = "<group>"; };
 		EE2685F4030CE902DA5720E4 /* Pods_OKTMDb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKTMDb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7D5A3F393A7A3E1BBD616B /* Pods-OKTMDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.debug.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.debug.xcconfig"; sourceTree = "<group>"; };
@@ -200,6 +214,10 @@
 		957D79F7285E07C800DF8047 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				957D7A0D285E748800DF8047 /* NowPlayingListCollectionViewCell.swift */,
+				957D7A0E285E748800DF8047 /* NowPlayingListCollectionViewCell.xib */,
+				957D7A13285E88A000DF8047 /* UpcomingListTableViewCell.swift */,
+				957D7A14285E88A000DF8047 /* UpcomingListTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -207,6 +225,9 @@
 		957D79F8285E07E100DF8047 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				957D7A11285E776100DF8047 /* UIImageView+Ext.swift */,
+				957D7A17285E8D6E00DF8047 /* String+Ext.swift */,
+				957D7A19285E8D8900DF8047 /* Date+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,8 +292,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957D7A10285E748800DF8047 /* NowPlayingListCollectionViewCell.xib in Resources */,
 				9503481D285DDE9900EB572E /* LaunchScreen.storyboard in Resources */,
 				9503481A285DDE9900EB572E /* Assets.xcassets in Resources */,
+				957D7A16285E88A000DF8047 /* UpcomingListTableViewCell.xib in Resources */,
 				95034818285DDE9900EB572E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,13 +349,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				957D7A0F285E748800DF8047 /* NowPlayingListCollectionViewCell.swift in Sources */,
+				957D7A15285E88A000DF8047 /* UpcomingListTableViewCell.swift in Sources */,
 				957D7A0A285E510000DF8047 /* MovieListModel.swift in Sources */,
+				957D7A1A285E8D8900DF8047 /* Date+Ext.swift in Sources */,
+				957D7A18285E8D6E00DF8047 /* String+Ext.swift in Sources */,
 				957D7A00285E16C800DF8047 /* Properties.swift in Sources */,
 				957D79FE285E108000DF8047 /* APIRouter.swift in Sources */,
 				957D79F4285E075300DF8047 /* MainViewController.swift in Sources */,
 				957D79FA285E0A4400DF8047 /* RequestError.swift in Sources */,
 				95034811285DDE9900EB572E /* AppDelegate.swift in Sources */,
 				95034813285DDE9900EB572E /* SceneDelegate.swift in Sources */,
+				957D7A12285E776100DF8047 /* UIImageView+Ext.swift in Sources */,
 				957D7A04285E293600DF8047 /* MainContracts.swift in Sources */,
 				957D79F6285E075D00DF8047 /* DetailViewController.swift in Sources */,
 				957D79FC285E0FA700DF8047 /* APIClient.swift in Sources */,
