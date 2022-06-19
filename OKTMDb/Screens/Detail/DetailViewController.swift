@@ -19,6 +19,7 @@ class DetailViewController: UIViewController {
     
     let indicator = UIActivityIndicatorView(style: .large)
     var movieId: Int?
+    private var movieURL: String?
     
     lazy var viewModel: DetailViewModel = {
         return DetailViewModel()
@@ -46,6 +47,10 @@ class DetailViewController: UIViewController {
         backButtonImageView?.isUserInteractionEnabled = true
         let dismissGesture = UITapGestureRecognizer(target: self, action: #selector(backButtonIsTapped))
         backButtonImageView?.addGestureRecognizer(dismissGesture)
+        
+        imdbImageView?.isUserInteractionEnabled = true
+        let redirectionGesture = UITapGestureRecognizer(target: self, action: #selector(imdbButtonIsTapped))
+        imdbImageView?.addGestureRecognizer(redirectionGesture)
     }
     
     private func configureActivityIndicators() {
@@ -64,12 +69,19 @@ class DetailViewController: UIViewController {
     @objc func backButtonIsTapped(sender: UITapGestureRecognizer) {
         dismiss(animated: true)
     }
+    
+    @objc func imdbButtonIsTapped(sender: UITapGestureRecognizer) {
+        if let urlString = movieURL, let url = URL(string: "https://www.imdb.com/title/\(urlString)/") {
+            UIApplication.shared.open(url)
+        }
+    }
 }
 
 extension DetailViewController: DetailDelegate {
     func handleViewModelOutput(_ output: DetailViewModelOutput) {
         switch output {
         case .reloadUI(let movie):
+            movieURL = movie.imdbID
             pageTitleLabel.text = movie.title
             if let movieImage = movie.backdropPath {
                 backdropImageView.setImage(with: NetworkingInfo.imageBase500 + movieImage)
