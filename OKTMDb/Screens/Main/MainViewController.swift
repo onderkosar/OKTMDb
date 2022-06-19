@@ -81,34 +81,49 @@ extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
         return 0
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.nowPlayingMovies?.results.count ?? 0
+        return viewModel.nowPlayingMovies.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryboardIDs.nowPlayingListCollectionViewCell, for: indexPath) as! NowPlayingListCollectionViewCell
-        cell.setupCell(with: viewModel.nowPlayingMovies?.results[indexPath.row])
+        cell.setupCell(with: viewModel.nowPlayingMovies[indexPath.row])
         return cell
     }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.upcomingMovies?.results.count ?? 0
+        return viewModel.upcomingMovies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardIDs.upcomingListTableViewCell, for: indexPath) as! UpcomingListTableViewCell
         cell.selectionStyle = .none
-        cell.setupCell(with: viewModel.upcomingMovies?.results[indexPath.row])
+        cell.setupCell(with: viewModel.upcomingMovies[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 136
     }
+}
+
+extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView == self.scrollView {
             upcomingTableView.isScrollEnabled = (self.scrollView.contentOffset.y >= nowPlayingCollectionView.bounds.height)
         } else if scrollView == upcomingTableView {
             upcomingTableView.isScrollEnabled = (upcomingTableView.contentOffset.y > 0)
+            
+            guard upcomingTableView.contentSize.height > 0, !viewModel.isEndOfUpcomingData else { return }
+            let position = scrollView.contentOffset.y
+            if position > ((upcomingTableView.contentSize.height) - (scrollView.frame.size.height)) - 100 {
+                viewModel.fetchUpcomingList()
+            }
+        } else if scrollView == nowPlayingCollectionView {
+            guard nowPlayingCollectionView.contentSize.width > 0, !viewModel.isEndOfNowPlayingData else { return }
+            let position = scrollView.contentOffset.x
+            if position > ((nowPlayingCollectionView.contentSize.width) - (scrollView.frame.size.width)) - 100 {
+                viewModel.fetchNowPlayingList()
+            }
         }
     }
 }
@@ -123,6 +138,8 @@ extension MainViewController: MainDelegate {
             upcomingTableView.reloadData()
             upcomingIndicator.stopAnimating()
         case .showError(let title, let message):
+            nowPlayingIndicator.stopAnimating()
+            upcomingIndicator.stopAnimating()
             let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let submitAction = UIAlertAction(title: AlertMessages.ok, style: .cancel)
             ac.addAction(submitAction)

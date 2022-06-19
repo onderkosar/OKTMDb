@@ -29,7 +29,9 @@ class NowPlayingListCollectionViewCell: UICollectionViewCell {
         }
         titleLabel.text = movie.title
         descriptionLabel.text = movie.overview
-        backdropImageView.setImage(with: NetworkingInfo.imageBase500 + movie.backdropPath)
+        if let movieImage = movie.backdropPath {
+            backdropImageView.setImage(with: NetworkingInfo.imageBase500 + movieImage)
+        }
     }
     
     private func setupEmptyCell() {

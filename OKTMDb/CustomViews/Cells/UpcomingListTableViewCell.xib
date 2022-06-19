@@ -36,7 +36,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OJi-DK-j17">
-                        <rect key="frame" x="128" y="47" width="201" height="31.5"/>
+                        <rect key="frame" x="128" y="65" width="201" height="31.5"/>
                         <string key="text">Long
 Description</string>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
@@ -64,8 +64,10 @@ Description</string>
                             <constraint firstAttribute="height" constant="1" id="FT9-GW-7lv"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-Ln-ff5">
-                        <rect key="frame" x="128" y="21" width="201" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZV-Ln-ff5">
+                        <rect key="frame" x="128" y="21" width="201" height="36"/>
+                        <string key="text">Movie 
+Title</string>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -78,12 +80,12 @@ Description</string>
                     <constraint firstItem="6z3-1O-oe4" firstAttribute="trailing" secondItem="inb-4N-TbO" secondAttribute="trailing" id="8Zv-Sw-ISq"/>
                     <constraint firstAttribute="trailing" secondItem="mZV-Ln-ff5" secondAttribute="trailing" constant="44" id="9P8-pX-MTB"/>
                     <constraint firstItem="6z3-1O-oe4" firstAttribute="leading" secondItem="kSd-Gc-MWR" secondAttribute="leading" id="9SU-qJ-8A3"/>
-                    <constraint firstAttribute="bottom" secondItem="NfT-dP-0gk" secondAttribute="bottom" constant="16" id="Ccl-ix-ScR"/>
                     <constraint firstItem="OJi-DK-j17" firstAttribute="leading" secondItem="mZV-Ln-ff5" secondAttribute="leading" id="Gl2-U5-fq7"/>
                     <constraint firstItem="NfT-dP-0gk" firstAttribute="leading" secondItem="OJi-DK-j17" secondAttribute="leading" id="JWe-fj-Gdk"/>
                     <constraint firstAttribute="trailing" secondItem="inb-4N-TbO" secondAttribute="trailing" constant="19" id="Wj1-jg-d7d"/>
                     <constraint firstItem="kSd-Gc-MWR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="bbW-j8-idl"/>
                     <constraint firstItem="OJi-DK-j17" firstAttribute="trailing" secondItem="mZV-Ln-ff5" secondAttribute="trailing" id="fJS-xi-cqs"/>
+                    <constraint firstItem="kSd-Gc-MWR" firstAttribute="bottom" secondItem="NfT-dP-0gk" secondAttribute="bottom" id="g2D-L6-RS7"/>
                     <constraint firstItem="mZV-Ln-ff5" firstAttribute="top" secondItem="kSd-Gc-MWR" secondAttribute="top" constant="5" id="gly-cg-k7t"/>
                     <constraint firstItem="kSd-Gc-MWR" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jQU-Mq-ChA"/>
                     <constraint firstItem="inb-4N-TbO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="l1P-fU-UpX"/>

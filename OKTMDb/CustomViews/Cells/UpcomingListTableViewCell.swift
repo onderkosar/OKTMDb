@@ -37,8 +37,10 @@ class UpcomingListTableViewCell: UITableViewCell {
         }
         titleLabel.text = movie.title
         descriptionLabel.text = movie.overview
-        dateLabel.text = movie.releaseDate.toDate?.formattedDate
-        backdropImageView.setImage(with: NetworkingInfo.imageBase500 + movie.backdropPath)
+        dateLabel.text = movie.releaseDate?.toDate?.formattedDate
+        if let movieImage = movie.backdropPath {
+            backdropImageView.setImage(with: NetworkingInfo.imageBase500 + movieImage)
+        }
     }
     
     private func setupEmptyCell() {

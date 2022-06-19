@@ -9,8 +9,8 @@ import Foundation
 import Alamofire
 
 enum APIRouter: URLRequestConvertible {
-    case getNowPlayingList
-    case getUpcomingList
+    case getNowPlayingList(page: Int)
+    case getUpcomingList(page: Int)
     case getMovieDetails(id: String)
     
     private var method: HTTPMethod {
@@ -43,7 +43,11 @@ enum APIRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         let parametersResult: Parameters = {
             switch self {
-            case .getNowPlayingList, .getUpcomingList, .getMovieDetails:
+            case .getNowPlayingList(page: let page):
+                return ["api_key": NetworkingInfo.apiKey, "page": page]
+            case .getUpcomingList(let page):
+                return ["api_key": NetworkingInfo.apiKey, "page": page]
+            case .getMovieDetails:
                 return ["api_key": NetworkingInfo.apiKey]
             }
         }()
