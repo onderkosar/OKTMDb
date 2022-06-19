@@ -12,11 +12,11 @@ extension UILabel {
         let completeString = "\(primaryString)\(secondaryString)"
         let completeAttributedString = NSMutableAttributedString(
             string: completeString, attributes: [
-                .foregroundColor: Colors.black
+                .foregroundColor: UIColor.label
             ]
         )
         let secondStringAttribute: [NSAttributedString.Key: Any] = [
-            .foregroundColor: Colors.green
+            .foregroundColor: UIColor.secondaryLabel
         ]
         let range = (completeString as NSString).range(of: secondaryString)
         completeAttributedString.addAttributes(secondStringAttribute, range: range)
