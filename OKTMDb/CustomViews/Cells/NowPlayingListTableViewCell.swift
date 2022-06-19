@@ -31,6 +31,7 @@ class NowPlayingListTableViewCell: UITableViewCell {
         collectionView.register(UINib(nibName: StoryboardIDs.nowPlayingListCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: StoryboardIDs.nowPlayingListCollectionViewCell)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.isPagingEnabled = true
     }
 
     func reloadCollectionView(with movies: [ListResult]) {
