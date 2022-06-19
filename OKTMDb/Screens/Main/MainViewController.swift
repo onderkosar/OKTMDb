@@ -8,10 +8,9 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var nowPlayingCollectionView: UICollectionView!
     @IBOutlet weak var upcomingTableView: UITableView!
     
+    let refreshControl = UIRefreshControl()
     let nowPlayingIndicator = UIActivityIndicatorView(style: .large)
     let upcomingIndicator = UIActivityIndicatorView(style: .large)
     
@@ -22,108 +21,103 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        configureScrollView()
-        configureCollectionView()
         configureTableView()
         configureActivityIndicators()
+        configureRefreshControl()
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        viewModel.nowPlayingPage = 1
+        viewModel.upcomingPage = 1
+        fetchAllData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        nowPlayingIndicator.startAnimating()
-        viewModel.fetchNowPlayingList()
-        upcomingIndicator.startAnimating()
-        viewModel.fetchUpcomingList()
-    }
-    
-    private func configureScrollView() {
-        scrollView.delegate = self
-        scrollView.bounces = false
-    }
-    
-    private func configureCollectionView() {
-        nowPlayingCollectionView.register(UINib(nibName: StoryboardIDs.nowPlayingListCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: StoryboardIDs.nowPlayingListCollectionViewCell)
-        nowPlayingCollectionView.delegate = self
-        nowPlayingCollectionView.dataSource = self
+        fetchAllData()
     }
     
     private func configureTableView() {
         upcomingTableView.delegate = self
         upcomingTableView.dataSource = self
+        upcomingTableView.register(UINib(nibName: StoryboardIDs.nowPlayingListTableViewCell, bundle: nil), forCellReuseIdentifier: StoryboardIDs.nowPlayingListTableViewCell)
         upcomingTableView.register(UINib(nibName: StoryboardIDs.upcomingListTableViewCell, bundle: nil), forCellReuseIdentifier: StoryboardIDs.upcomingListTableViewCell)
         upcomingTableView.separatorStyle = .none
-        upcomingTableView.isScrollEnabled = false
         upcomingTableView.bounces = true
     }
     
     private func configureActivityIndicators() {
         nowPlayingIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nowPlayingIndicator)
-        nowPlayingIndicator.centerXAnchor.constraint(equalTo: nowPlayingCollectionView.centerXAnchor).isActive = true
-        nowPlayingIndicator.centerYAnchor.constraint(equalTo: nowPlayingCollectionView.centerYAnchor).isActive = true
+        nowPlayingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nowPlayingIndicator.centerYAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
         upcomingIndicator.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(upcomingIndicator)
         upcomingIndicator.centerXAnchor.constraint(equalTo: upcomingTableView.centerXAnchor).isActive = true
-        upcomingIndicator.centerYAnchor.constraint(equalTo: upcomingTableView.topAnchor, constant: 200.0).isActive = true
+        upcomingIndicator.centerYAnchor.constraint(equalTo: upcomingTableView.centerYAnchor, constant: 100.0).isActive = true
     }
-}
-
-extension MainViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = view.bounds.width
-        let cellHeight = cellWidth * 0.69
-        return CGSize(width: cellWidth, height: cellHeight)
+    
+    private func configureRefreshControl() {
+        refreshControl.attributedTitle = NSAttributedString(string: AlertMessages.pullToRefresh)
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        refreshControl.bounds = CGRect(x: refreshControl.bounds.minX, y: -(view.bounds.height / 2), width: refreshControl.bounds.width, height: refreshControl.bounds.height)
+        upcomingTableView.addSubview(refreshControl)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.nowPlayingMovies.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryboardIDs.nowPlayingListCollectionViewCell, for: indexPath) as! NowPlayingListCollectionViewCell
-        cell.setupCell(with: viewModel.nowPlayingMovies[indexPath.row])
-        return cell
+    
+    private func fetchAllData() {
+        nowPlayingIndicator.startAnimating()
+        viewModel.fetchNowPlayingList()
+        upcomingIndicator.startAnimating()
+        viewModel.fetchUpcomingList()
     }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.upcomingMovies.count
+        switch section {
+        case 0:
+            return 1
+        default:
+            return viewModel.upcomingMovies.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardIDs.upcomingListTableViewCell, for: indexPath) as! UpcomingListTableViewCell
-        cell.selectionStyle = .none
-        cell.setupCell(with: viewModel.upcomingMovies[indexPath.row])
-        return cell
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardIDs.nowPlayingListTableViewCell, for: indexPath) as! NowPlayingListTableViewCell
+            cell.selectionStyle = .none
+            cell.reloadCollectionView(with: viewModel.nowPlayingMovies)
+            cell.delegate = self
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: StoryboardIDs.upcomingListTableViewCell, for: indexPath) as! UpcomingListTableViewCell
+            cell.selectionStyle = .none
+            cell.setupCell(with: viewModel.upcomingMovies[indexPath.row])
+            return cell
+        }
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 136
+        switch indexPath.section {
+        case 0:
+            return view.bounds.width * 0.69
+        default:
+            return 136
+        }
     }
 }
 
 extension MainViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView == self.scrollView {
-            upcomingTableView.isScrollEnabled = (self.scrollView.contentOffset.y >= nowPlayingCollectionView.bounds.height)
-        } else if scrollView == upcomingTableView {
-            upcomingTableView.isScrollEnabled = (upcomingTableView.contentOffset.y > 0)
-            
-            guard upcomingTableView.contentSize.height > 0, !viewModel.isEndOfUpcomingData else { return }
-            let position = scrollView.contentOffset.y
-            if position > ((upcomingTableView.contentSize.height) - (scrollView.frame.size.height)) - 100 {
-                viewModel.fetchUpcomingList()
-            }
-        } else if scrollView == nowPlayingCollectionView {
-            guard nowPlayingCollectionView.contentSize.width > 0, !viewModel.isEndOfNowPlayingData else { return }
-            let position = scrollView.contentOffset.x
-            if position > ((nowPlayingCollectionView.contentSize.width) - (scrollView.frame.size.width)) - 100 {
-                viewModel.fetchNowPlayingList()
-            }
+        guard upcomingTableView.contentSize.height > 0, !viewModel.isEndOfUpcomingData else { return }
+        let position = scrollView.contentOffset.y
+        if position > ((upcomingTableView.contentSize.height) - (scrollView.frame.size.height)) - 100 {
+            viewModel.fetchUpcomingList()
         }
     }
 }
@@ -132,19 +126,32 @@ extension MainViewController: MainDelegate {
     func handleViewModelOutput(_ output: MainViewModelOutput) {
         switch output {
         case .loadNowPlayingList:
-            nowPlayingCollectionView.reloadData()
+            upcomingTableView.reloadSections(IndexSet(integersIn: 0...0), with: .none)
             nowPlayingIndicator.stopAnimating()
         case .loadUpcomingList:
             upcomingTableView.reloadData()
             upcomingIndicator.stopAnimating()
         case .showError(let title, let message):
-            nowPlayingIndicator.stopAnimating()
-            upcomingIndicator.stopAnimating()
+            for indicator in [nowPlayingIndicator, upcomingIndicator] {
+                if indicator.isAnimating {
+                    indicator.stopAnimating()
+                }
+            }
             let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
             let submitAction = UIAlertAction(title: AlertMessages.ok, style: .cancel)
             ac.addAction(submitAction)
             ac.view.tintColor = .purple
             present(ac, animated: true)
         }
+        
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
+    }
+}
+
+extension MainViewController: NowPlayingListTableViewCellDelegate {
+    func paginate() {
+        viewModel.fetchNowPlayingList()
     }
 }

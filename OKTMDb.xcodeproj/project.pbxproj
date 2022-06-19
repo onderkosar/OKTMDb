@@ -29,6 +29,8 @@
 		957D7A16285E88A000DF8047 /* UpcomingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 957D7A14285E88A000DF8047 /* UpcomingListTableViewCell.xib */; };
 		957D7A18285E8D6E00DF8047 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A17285E8D6E00DF8047 /* String+Ext.swift */; };
 		957D7A1A285E8D8900DF8047 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A19285E8D8900DF8047 /* Date+Ext.swift */; };
+		95FB3FA1285F54DB002304FD /* NowPlayingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3F9F285F54DB002304FD /* NowPlayingListTableViewCell.swift */; };
+		95FB3FA2285F54DB002304FD /* NowPlayingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FB3FA0285F54DB002304FD /* NowPlayingListTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,8 @@
 		957D7A14285E88A000DF8047 /* UpcomingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpcomingListTableViewCell.xib; sourceTree = "<group>"; };
 		957D7A17285E8D6E00DF8047 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		957D7A19285E8D8900DF8047 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		95FB3F9F285F54DB002304FD /* NowPlayingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingListTableViewCell.swift; sourceTree = "<group>"; };
+		95FB3FA0285F54DB002304FD /* NowPlayingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingListTableViewCell.xib; sourceTree = "<group>"; };
 		EAC5426C075271B3E7DA09F9 /* Pods-OKTMDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.release.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.release.xcconfig"; sourceTree = "<group>"; };
 		EE2685F4030CE902DA5720E4 /* Pods_OKTMDb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKTMDb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7D5A3F393A7A3E1BBD616B /* Pods-OKTMDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.debug.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.debug.xcconfig"; sourceTree = "<group>"; };
@@ -214,10 +218,12 @@
 		957D79F7285E07C800DF8047 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				957D7A0D285E748800DF8047 /* NowPlayingListCollectionViewCell.swift */,
-				957D7A0E285E748800DF8047 /* NowPlayingListCollectionViewCell.xib */,
 				957D7A13285E88A000DF8047 /* UpcomingListTableViewCell.swift */,
 				957D7A14285E88A000DF8047 /* UpcomingListTableViewCell.xib */,
+				95FB3F9F285F54DB002304FD /* NowPlayingListTableViewCell.swift */,
+				95FB3FA0285F54DB002304FD /* NowPlayingListTableViewCell.xib */,
+				957D7A0D285E748800DF8047 /* NowPlayingListCollectionViewCell.swift */,
+				957D7A0E285E748800DF8047 /* NowPlayingListCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 				9503481A285DDE9900EB572E /* Assets.xcassets in Resources */,
 				957D7A16285E88A000DF8047 /* UpcomingListTableViewCell.xib in Resources */,
 				95034818285DDE9900EB572E /* Main.storyboard in Resources */,
+				95FB3FA2285F54DB002304FD /* NowPlayingListTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -363,6 +370,7 @@
 				957D7A12285E776100DF8047 /* UIImageView+Ext.swift in Sources */,
 				957D7A04285E293600DF8047 /* MainContracts.swift in Sources */,
 				957D79F6285E075D00DF8047 /* DetailViewController.swift in Sources */,
+				95FB3FA1285F54DB002304FD /* NowPlayingListTableViewCell.swift in Sources */,
 				957D79FC285E0FA700DF8047 /* APIClient.swift in Sources */,
 				957D7A02285E290F00DF8047 /* MainViewModel.swift in Sources */,
 			);

@@ -8,8 +8,9 @@
 import UIKit
 
 enum StoryboardIDs {
-    static let nowPlayingListCollectionViewCell = "NowPlayingListCollectionViewCell"
     static let upcomingListTableViewCell = "UpcomingListTableViewCell"
+    static let nowPlayingListTableViewCell = "NowPlayingListTableViewCell"
+    static let nowPlayingListCollectionViewCell = "NowPlayingListCollectionViewCell"
 }
 
 enum NetworkingInfo {
@@ -23,6 +24,7 @@ enum AlertMessages {
     static let ok = "OK"
     static let errorResult = "Error fetching movie results"
     static let errorDetails = "Error fetching movie details"
+    static let pullToRefresh = "Refreshing..."
 }
 
 enum Images {

@@ -14,11 +14,11 @@ class MainViewModel: MainProtocol {
     var upcomingMovies: [ListResult] = []
     var isEndOfNowPlayingData: Bool = false
     var isEndOfUpcomingData: Bool = false
-    private var nowPlayingPage: Int = 1
+    var nowPlayingPage: Int = 1
+    var upcomingPage: Int = 1
     private var nowPlayingTotalPages: Int = 0
-    private var isCurrentlyFetchingNowPlayingData: Bool = false
-    private var upcomingPge: Int = 1
     private var upcomingTotalPages: Int = 0
+    private var isCurrentlyFetchingNowPlayingData: Bool = false
     private var isCurrentlyFetchingUpcomingData: Bool = false
     
     private func onNowPlayingDataFetched<T: Codable>(data: T){
@@ -30,11 +30,11 @@ class MainViewModel: MainProtocol {
     }
     
     private func onUpcomingDataFetched<T: Codable>(data: T){
-        print("\(upcomingPge) - \(upcomingTotalPages)")
-        if upcomingPge == upcomingTotalPages {
+        print("\(upcomingPage) - \(upcomingTotalPages)")
+        if upcomingPage == upcomingTotalPages {
             isEndOfUpcomingData = true
         } else {
-            upcomingPge += 1
+            upcomingPage += 1
         }
     }
     
@@ -47,6 +47,9 @@ class MainViewModel: MainProtocol {
                 switch result {
                 case .success(let data):
                     if let totalPages = data.totalPages {
+                        if self.nowPlayingPage == 1 {
+                            self.nowPlayingMovies = []
+                        }
                         self.nowPlayingTotalPages = totalPages
                     }
                     guard let results = data.results else { return }
@@ -64,12 +67,15 @@ class MainViewModel: MainProtocol {
     func fetchUpcomingList() {
         if !isCurrentlyFetchingUpcomingData && !isEndOfUpcomingData {
             isCurrentlyFetchingUpcomingData = true
-            APIClient.request(route: .getUpcomingList(page: upcomingPge)) { [weak self] (result: AFResult<MovieListModel>) in
+            APIClient.request(route: .getUpcomingList(page: upcomingPage)) { [weak self] (result: AFResult<MovieListModel>) in
                 guard let self = self else { return }
                 self.isCurrentlyFetchingUpcomingData = false
                 switch result {
                 case .success(let data):
                     if let totalPages = data.totalPages {
+                        if self.upcomingPage == 1 {
+                            self.upcomingMovies = []
+                        }
                         self.upcomingTotalPages = totalPages
                     }
                     guard let results = data.results else { return }
