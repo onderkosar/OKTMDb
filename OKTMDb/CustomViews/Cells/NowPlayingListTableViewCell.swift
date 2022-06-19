@@ -9,6 +9,7 @@ import UIKit
 
 protocol NowPlayingListTableViewCellDelegate {
     func paginate()
+    func tapMovie(with id: Int)
 }
 
 class NowPlayingListTableViewCell: UITableViewCell {
@@ -61,6 +62,11 @@ extension NowPlayingListTableViewCell: UICollectionViewDelegateFlowLayout, UICol
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryboardIDs.nowPlayingListCollectionViewCell, for: indexPath) as! NowPlayingListCollectionViewCell
         cell.setupCell(with: nowPlayingMovies[indexPath.row])
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let movieId = nowPlayingMovies[indexPath.row].id else { return }
+        delegate?.tapMovie(with: movieId)
     }
 }
 

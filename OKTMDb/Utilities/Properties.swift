@@ -8,6 +8,7 @@
 import UIKit
 
 enum StoryboardIDs {
+    static let detailViewController = "DetailViewController"
     static let upcomingListTableViewCell = "UpcomingListTableViewCell"
     static let nowPlayingListTableViewCell = "NowPlayingListTableViewCell"
     static let nowPlayingListCollectionViewCell = "NowPlayingListCollectionViewCell"
@@ -29,4 +30,10 @@ enum AlertMessages {
 
 enum Images {
     static let placeholderImage = UIImage(systemName: "photo")
+    static let logoImdb = UIImage(named: "logo_imdb")
+}
+
+enum Colors {
+    static let black = UIColor(red: 43/255.0, green: 45/255.0, blue: 66/255.0, alpha: 1.0)
+    static let green = UIColor(red: 173/255.0, green: 181/255.0, blue: 189/255.0, alpha: 1.0)
 }

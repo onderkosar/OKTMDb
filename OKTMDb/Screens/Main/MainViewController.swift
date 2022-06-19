@@ -70,6 +70,13 @@ class MainViewController: UIViewController {
         upcomingIndicator.startAnimating()
         viewModel.fetchUpcomingList()
     }
+    
+    private func presentDetail(id: Int) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: StoryboardIDs.detailViewController) as? DetailViewController else { return }
+        vc.movieId = id
+        vc.modalPresentationStyle = .overFullScreen
+        present(vc, animated: true)
+    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -109,6 +116,11 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             return 136
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let movieId = viewModel.upcomingMovies[indexPath.row].id else { return }
+        presentDetail(id: movieId)
     }
 }
 
@@ -151,6 +163,10 @@ extension MainViewController: MainDelegate {
 }
 
 extension MainViewController: NowPlayingListTableViewCellDelegate {
+    func tapMovie(with id: Int) {
+        presentDetail(id: id)
+    }
+    
     func paginate() {
         viewModel.fetchNowPlayingList()
     }

@@ -31,6 +31,10 @@
 		957D7A1A285E8D8900DF8047 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957D7A19285E8D8900DF8047 /* Date+Ext.swift */; };
 		95FB3FA1285F54DB002304FD /* NowPlayingListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3F9F285F54DB002304FD /* NowPlayingListTableViewCell.swift */; };
 		95FB3FA2285F54DB002304FD /* NowPlayingListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 95FB3FA0285F54DB002304FD /* NowPlayingListTableViewCell.xib */; };
+		95FB3FA4285F60A6002304FD /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3FA3285F60A6002304FD /* DetailViewModel.swift */; };
+		95FB3FA6285F60AF002304FD /* DetailContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3FA5285F60AF002304FD /* DetailContracts.swift */; };
+		95FB3FA8285F610D002304FD /* MovieDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3FA7285F610D002304FD /* MovieDetailModel.swift */; };
+		95FB3FAA285F69DA002304FD /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FB3FA9285F69DA002304FD /* UILabel+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +63,10 @@
 		957D7A19285E8D8900DF8047 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		95FB3F9F285F54DB002304FD /* NowPlayingListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingListTableViewCell.swift; sourceTree = "<group>"; };
 		95FB3FA0285F54DB002304FD /* NowPlayingListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingListTableViewCell.xib; sourceTree = "<group>"; };
+		95FB3FA3285F60A6002304FD /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		95FB3FA5285F60AF002304FD /* DetailContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContracts.swift; sourceTree = "<group>"; };
+		95FB3FA7285F610D002304FD /* MovieDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailModel.swift; sourceTree = "<group>"; };
+		95FB3FA9285F69DA002304FD /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		EAC5426C075271B3E7DA09F9 /* Pods-OKTMDb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.release.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.release.xcconfig"; sourceTree = "<group>"; };
 		EE2685F4030CE902DA5720E4 /* Pods_OKTMDb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OKTMDb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB7D5A3F393A7A3E1BBD616B /* Pods-OKTMDb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OKTMDb.debug.xcconfig"; path = "Target Support Files/Pods-OKTMDb/Pods-OKTMDb.debug.xcconfig"; sourceTree = "<group>"; };
@@ -166,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				957D7A09285E510000DF8047 /* MovieListModel.swift */,
+				95FB3FA7285F610D002304FD /* MovieDetailModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,6 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				957D79F5285E075D00DF8047 /* DetailViewController.swift */,
+				95FB3FA3285F60A6002304FD /* DetailViewModel.swift */,
+				95FB3FA5285F60AF002304FD /* DetailContracts.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -234,6 +245,7 @@
 				957D7A11285E776100DF8047 /* UIImageView+Ext.swift */,
 				957D7A17285E8D6E00DF8047 /* String+Ext.swift */,
 				957D7A19285E8D8900DF8047 /* Date+Ext.swift */,
+				95FB3FA9285F69DA002304FD /* UILabel+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -365,10 +377,14 @@
 				957D79FE285E108000DF8047 /* APIRouter.swift in Sources */,
 				957D79F4285E075300DF8047 /* MainViewController.swift in Sources */,
 				957D79FA285E0A4400DF8047 /* RequestError.swift in Sources */,
+				95FB3FA8285F610D002304FD /* MovieDetailModel.swift in Sources */,
 				95034811285DDE9900EB572E /* AppDelegate.swift in Sources */,
 				95034813285DDE9900EB572E /* SceneDelegate.swift in Sources */,
+				95FB3FA6285F60AF002304FD /* DetailContracts.swift in Sources */,
+				95FB3FAA285F69DA002304FD /* UILabel+Ext.swift in Sources */,
 				957D7A12285E776100DF8047 /* UIImageView+Ext.swift in Sources */,
 				957D7A04285E293600DF8047 /* MainContracts.swift in Sources */,
+				95FB3FA4285F60A6002304FD /* DetailViewModel.swift in Sources */,
 				957D79F6285E075D00DF8047 /* DetailViewController.swift in Sources */,
 				95FB3FA1285F54DB002304FD /* NowPlayingListTableViewCell.swift in Sources */,
 				957D79FC285E0FA700DF8047 /* APIClient.swift in Sources */,
